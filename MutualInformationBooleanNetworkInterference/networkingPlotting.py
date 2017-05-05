@@ -1,7 +1,8 @@
-from MutualInformationBooleanNetworkInference import MIBNI
 from PyBoolNet import InteractionGraphs as IGs
 from PyBoolNet import QuineMcCluskey as QMC
 from PyBoolNet import StateTransitionGraphs as STGs
+
+from MutualInformationBooleanNetworkInterference.MutualInformationBooleanNetworkInference import MIBNI
 
 bool_func = MIBNI()
 new_bool_func = [None for func in bool_func]

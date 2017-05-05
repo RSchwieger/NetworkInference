@@ -5,10 +5,12 @@ A novel mutual information-based Boolean network inference method from time-seri
 
 """
 
-from math import log2 as log
-from itertools import product, repeat
-from test_case import v,K
 from copy import deepcopy
+from itertools import product, repeat
+from math import log2 as log
+
+from MutualInformationBooleanNetworkInterference.test_case import v,K
+
 
 def time_series_to_random_variable(time_series):
     random_variable = {}
