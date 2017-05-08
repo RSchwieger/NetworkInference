@@ -1,7 +1,6 @@
 from PyBoolNet import InteractionGraphs as IGs
 from PyBoolNet import QuineMcCluskey as QMC
 from PyBoolNet import StateTransitionGraphs as STGs
-
 from MutualInformationBooleanNetworkInterference.MutualInformationBooleanNetworkInference import MIBNI
 
 bool_func = MIBNI()
@@ -11,20 +10,14 @@ def get_f_i(bool_func, i):
     # x0, x1, x2, x3
     # x0, x1, x2, x3, x4, x5, x6, x7, x8, x9
     def f_i(x0, x1, x2, x3, x4, x5, x6, x7, x8, x9):
-        return bool_func[f_i.i]([x0, x1, x2, x3, x4, x5, x6, x7, x8, x9])
-    f_i.i = i
-    #print("boolean_function ["+str(i)+"] = " + str(bool_func[i].elem))
-    #print(f_i(1,1,1,1))
+        return bool_func[i]([x0, x1, x2, x3, x4, x5, x6, x7, x8, x9])
     return f_i
 
-for i in range(10):
+for i in range(len(new_bool_func)):
     new_bool_func[i] = get_f_i(bool_func,i)
 
-#print([new_bool_func[i](0, 1, 0, 1, 0, 1, 0, 1, 0, 1) for i in range(len(new_bool_func))])
 variable_to_boolean_function = {"x"+str(i): new_bool_func[i] for i in range(len(bool_func))}
-print(variable_to_boolean_function)
 print(5*"###")
-#print(bool_func[0]([1,1,0,1]))
 prime_implicants = QMC.functions2primes(variable_to_boolean_function)
 # Create the interaction graph
 igraph = IGs.primes2igraph(prime_implicants)
